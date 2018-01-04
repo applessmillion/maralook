@@ -17,26 +17,32 @@ $currows = $row['LogID'];
 	</head>
 	<body>
 		<div id="main">
-		<?php echo file_get_contents('header.html') . "</br>"; ?>
-		<img src="img/corner.png" width="9">
-		<img src="img/border.png" width="692" height="9" border="0">
-		<img src="img/corner2.png" width="9">
-		<table align="center" width="710">
+		<?php echo file_get_contents('header.html')?>
+		</br>
 <!-- End Init -->
+		<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
+		<table align="center" width="710">
+		<tr>
+			<th>
+				<h2>About Maralook</h2>
+			</th>
+		</tr>
+		<tr>
+			<th>
+				<p>
+				<br>
 <?php
-echo    '<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">';
-echo    '<table align="center" width="710">';
-echo        '<tr><th><h2>About Maralook</h2></th></tr>';
-echo        '<tr><th><p></br>';
 echo        $about_desc;
-echo        'There are currently <strong>',$currows,'</strong> prices logged by Maralook!</br></br></br>';
+echo        'There are currently <strong>',$currows,'</strong> prices logged by Maralook!<br><br><br>';
 echo        '<strong><a class="head" href="changes.php">Maralook Changelog</a></strong>';
-echo        '</p></th></tr>';
-echo        '<tr><th style="font-size: 85%;">'.$about_madeby.'</br>'.$about_use.'</th></tr>';
-echo    '</table>';
-
-echo    '<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9">';
-
-echo '</div>';
-echo '</html>'; 
 ?>
+				</p>
+			</th>
+		</tr>
+<?php
+echo        '<tr><th style="font-size: 85%;">'.$about_madeby.'</br>'.$about_use.'</th></tr>';
+?>
+		</table>
+		<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9">
+	</div>
+</html>
