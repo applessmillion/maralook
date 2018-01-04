@@ -15,19 +15,22 @@ include_once('simple_html_dom.php');
 
 #CODE FOR SEARCHING DATABASE AND PRINTING RESULTS#
 if(isset($_GET["search"])) {
-    
-        #STARTING HTML BEGIN#
-?>
-        <html><head>
-        <title>Maralook - Maralook Search</title>
-        <link rel="stylesheet" type="text/css" href="style.css"></head>
-        <body><div id="main">
-        <?php echo file_get_contents('header.html') . "</br>"; ?>
-        <img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
-        <table align="center" width="710">
+?>    
+<html>
+<!-- Initalize Page -->
+	<head>
+		<title>Maralook - Item Search</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="main">
+		<?php echo file_get_contents('header.html') . "</br>"; ?>
+		<img src="img/corner.png" width="9">
+		<img src="img/border.png" width="692" height="9" border="0">
+		<img src="img/corner2.png" width="9">
+		<table align="center" width="710">
+<!-- End Init -->
 <?php
-        #STARTING END#
-    
     $name = $_GET["search"];
     #GET NAME FROM SEARCH TERMS#
     $search_query = mysqli_query($con, "SELECT * FROM Names WHERE ItemName like '%$name%' OR SecondaryName like '%$name%' ORDER BY ItemName ASC LIMIT 50");
@@ -55,22 +58,23 @@ elseif(isset($_GET["info"])) {
         $obj = mysqli_fetch_object($query);
         $iid = $obj->ItemID;
         
-        $pricehistory = mysqli_query($con, "SELECT * FROM Pricelog WHERE ItemID='$iid' ORDER BY Timestamp DESC LIMIT 15");
+        $pricehistory = mysqli_query($con, "SELECT * FROM Pricelog WHERE ItemID='$iid' ORDER BY Timestamp DESC LIMIT 16");
         $pricehistory2 = mysqli_query($con, "SELECT * FROM Pricelog WHERE ItemID='$iid' ORDER BY Timestamp DESC LIMIT 500");
-        $price_nums = mysqli_num_rows($pricehistory);
-
-        #STARTING HTML BEGIN#
-?>
-        <html><head>
-        <?php echo '<title>Maralook Info - ' . urldecode($_GET["info"]) . '</title>'; ?>
-        <link rel="stylesheet" type="text/css" href="style.css"></head>
-        <body><div id="main">
-        <?php echo file_get_contents('header.html') . "</br>"; ?>
-        <img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
-        <table align="center" width="710">
+        $price_nums = mysqli_num_rows($pricehistory);		
+?>    
+<html>
+<!-- Initalize Page -->
+	<head>
+		<?php echo '<title>Maralook Info - ' . urldecode($_GET["info"]) . '</title>'; ?>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="main">
+		<?php echo file_get_contents('header.html') . "</br>"; ?>
+		<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
+		<table align="center" width="710">
+<!-- End Init -->
 <?php
-        #STARTING END#
-        
         if($iid == NULL) {
         $marapage = '<h2 style="color:red;">Item Not Found!</h2></br>Please return to the search and try again.';
                 #BACK BUTTON TEXT - BACK TO RESULTS#
@@ -139,10 +143,14 @@ elseif(isset($_GET["info"])) {
                 $marapage = '<h2 style="color:red;">Timed Out!</h2></br>Something prevented us from getting a live look at this item.</br>Try again later to add prices, for now, here is the history...';
                 echo "<th>" . $marapage . "</br></br></th>"; 
             }
-            $avgsql = "SELECT AVG(PlayerPrice) from Pricelog WHERE ItemID='$iid' LIMIT 50;"; 
+            $avgsql = "SELECT AVG(PlayerPrice) from Pricelog WHERE ItemID='$iid';"; 
+			$avg2sql = "SELECT AVG(PlayerPrice) from ( SELECT PlayerPrice FROM Pricelog WHERE ItemID='$iid' ORDER BY Timestamp DESC LIMIT 15) AS QRY;"; 
 			$hisql = "SELECT * from Pricelog WHERE ItemID='$iid' ORDER BY PlayerPrice DESC LIMIT 1;"; 
 			$losql = "SELECT * from Pricelog WHERE ItemID='$iid' ORDER BY PlayerPrice ASC LIMIT 1;"; 
             
+			$row= mysqli_fetch_array(mysqli_query($con, $avg2sql), MYSQL_ASSOC);             
+            $avg2p = $row['AVG(PlayerPrice)'];
+			
 			$row= mysqli_fetch_array(mysqli_query($con, $avgsql), MYSQL_ASSOC);             
             $avgp = $row['AVG(PlayerPrice)'];
 			
@@ -155,9 +163,10 @@ elseif(isset($_GET["info"])) {
 			$lowp = $lows['PlayerPrice'];
 
             echo '<tr><th><hr style="border-color:#6D7ACE; width:55%;"></th></tr>';
-            echo "<tr><th><h3>Average Price: " . number_format($avgp) ."MP</h3>";
-			echo "<tr><th><strong>Highest Selling Price:</strong> " . number_format($highp) ."MP </br>";
-			echo "<tr><th><strong>Lowest Selling Price:</strong> " . number_format($lowp) ."MP </br></br>";
+            echo "<tr><th><h3>Recent Average: " . number_format($avg2p) ."MP</h3>";
+			echo "<tr><th><strong>All-Time Average: " . number_format($avgp) ."MP</strong>";
+			echo "<tr><th><strong>All-Time High:</strong> " . number_format($highp) ."MP </br>";
+			echo "<tr><th><strong>All-Time Low:</strong> " . number_format($lowp) ."MP </br></br>";
             echo "Based on <strong>" . mysqli_num_rows($pricehistory2) ."</strong> recorded prices for this item.</th></tr>";
             echo '<tr><th><hr style="border-color:#6D7ACE; width:50%;"></th></tr>';
             echo "<tr><th><h2>Price History</h2></th></tr>";
@@ -187,17 +196,21 @@ elseif(isset($_GET["random"])) {
         $pricehistory2 = mysqli_query($con, "SELECT * FROM Pricelog WHERE ItemID like $iid ORDER BY Timestamp DESC LIMIT 500");
         $price_nums = mysqli_num_rows($pricehistory);
 
-        #STARTING HTML BEGIN#
-?>
-        <html><head>
-        <?php echo '<title>Maralook Info - Random Search</title>'; ?>
-        <link rel="stylesheet" type="text/css" href="style.css"></head>
-        <body><div id="main">
-        <?php echo file_get_contents('header.html') . "</br>"; ?>
-        <img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
-        <table align="center" width="710">
+?>    
+<html>
+<!-- Initalize Page -->
+	<head>
+		<title>Maralook - Item Search</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="main">
+		<?php echo file_get_contents('header.html') . "</br>"; ?>
+		<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
+		<table align="center" width="710">
+<!-- End Init -->
+
 <?php
-        #STARTING END#
         
         if($iid == NULL) {
         $marapage = '<h2 style="color:red;">Item Not Found!</h2></br>Please return to the search and try again.';
@@ -303,22 +316,28 @@ elseif(isset($_GET["random"])) {
 else {
     
         #STARTING HTML BEGIN#
-        ?>
-        <html><head>
-        <title>Maralook - Item Search</title>
-        <link rel="stylesheet" type="text/css" href="style.css"></head>
-        <body><div id="main">
-        <?php echo file_get_contents('header.html') . "</br>"; ?>
-        <img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
-        <table align="center" width="710">
-        <?php
-        #STARTING HTML END#
-        ?>
+?>    
+			<html>
+			<!-- Initalize Page -->
+				<head>
+					<title>Maralook - Item Search</title>
+					<link rel="stylesheet" type="text/css" href="style.css">
+				</head>
+				<body>
+					<div id="main">
+					<?php echo file_get_contents('header.html') . "</br>"; ?>
+					<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
+					<table align="center" width="710">
+			<!-- End Init -->
+
+
         <tr><th><a href="item.php"><img src="img/search-item.png"></img></a></th></tr>
         <tr><th><img src="img/titles/item-search.png"></img></th></tr>
         <tr><td style="height:8px" ></td></tr>
         <tr><th>
-        <p> <?php $item_desc ?> </p>
+        <p> <?php include_once 'vars.php'; 
+			$item_desc ?> 
+		</p>
         </th></tr>
         <tr><td style="height:10px" ></td></tr>
         <tr><th>
