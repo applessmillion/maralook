@@ -8,8 +8,9 @@ $data_connect = "
 	";
 ######################
 
-$mainpage_notice = '';
-
+#########################
+$mainpage_notice = "";
+#########################
 $about_desc = 
 "
 ". $mainpage_notice ."
@@ -79,11 +80,8 @@ $var_item_updatetxt =
 "
 ". $mainpage_notice ."
 <h3>Recent News</h3>
+<p><strong>January 13th</strong> - Item database has been updated to the funky account upgrade. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for everything new.</p>
 <p><strong>January 1st</strong> - Added recent averages along with all-time averages for prices. Recent prices are calculated from the 15 most recent prices logged by Maralook.</p>
-</br>
-<p><strong>December 30th</strong> - Item database has been updated. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for everything new.</p>
-</br>
-<p><strong>December 25th</strong> - Wanted! list is now available. You will find all these items have no price history. Maybe clicking will give it's first price?</p>
 </br>
 
 ";
