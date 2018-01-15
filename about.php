@@ -32,9 +32,7 @@ $currows = $row['LogID'];
 				<p>
 				<br>
 <?php
-echo        $about_desc;
-echo        'There are currently <strong>',$currows,'</strong> prices logged by Maralook!<br><br><br>';
-echo        '<strong><a class="head" href="changes.php">Maralook Changelog</a></strong>';
+echo $about_desc;
 ?>
 				</p>
 			</th>

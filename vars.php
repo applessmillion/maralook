@@ -6,6 +6,9 @@ $data_connect = "
 		$con = new mysqli($ip,$user,$pw,$db);
     }
 	";
+	
+$statuser = file_get_contents("http://www.maralook.com/stats.php?total-users");
+$statlog = 	file_get_contents("http://www.maralook.com/stats.php?total-logs");
 ######################
 
 #For important announcements
@@ -24,23 +27,14 @@ $var_item_updatetxt =
 #
 $about_desc = 
 "
-". $mainpage_notice ."
+<h3>This page is currently under construction! It'll be a lot more useful soon.<br>
+Need to contact us? Shoot us an email at maralook@jadefury.com.</h3>
 Maralook is a tool for new and experienced players to find useful 
 pricing information. Maralook allows anyone to look up information on price history and list items by price.
 </br></br>
-<h3>Item Search</h3>
-<p>The <strong>Item Search</strong> allows you to search a Marapets item to find any 
-collected pricing history. Up to twelve records are shown along with the dates they were 
-collected on. Records are generated upon user lookup, so if an item does not have any history, 
-it may mean the item is not searched for often or it does not appear in the Shop Search often.</p>
+There have been <b>". $statuser ."</b> Users contributing to our website!
 </br>
-<h3>Price Search</h3>
-<p>The <strong>Price Search</strong> allows you to search a price range. This feature was the last to be added, and relies on 
-users searching for items. Price is determined on the last time the item was looked up, so actual pricing may vary. 
-A general scan of item prices occurs every week or so, in case an item may not be searched often for reliable information. 
-From the search page, you will be able to purchase the item from the Shop Search, or view it on Maralook first.
-</p>
-</br>
+Maralook has logged <b>". $statlog ."</b> different prices on Marapets items!
 </br>
 ";
 

@@ -333,7 +333,7 @@ else {
         <tr><td style="height:8px" ></td></tr>
         <tr><th>
         <p> <?php include_once 'vars.php'; 
-			$item_desc ?> 
+			echo $item_desc; ?> 
 		</p>
         </th></tr>
         <tr><td style="height:10px" ></td></tr>
@@ -376,7 +376,7 @@ else {
     echo '</tr></table></th></tr>';
 
     ##    
-echo '<tr><td style="height:10px">'.$var_item_updatetxt.'</td></tr>';    
+echo '<tr><td style="height:10px"><br>'.$var_item_updatetxt.'</td></tr>';    
 }    
 ?>
 <tr><td style="height:10px"></td></tr>
