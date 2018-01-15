@@ -8,9 +8,20 @@ $data_connect = "
 	";
 ######################
 
-#########################
+#For important announcements
 $mainpage_notice = "";
 #########################
+
+#For news on main pages
+$var_item_updatetxt = 
+"
+". $mainpage_notice ."
+<h3>Recent News</h3>
+<p><strong>January 15th</strong> - Backend changes. Changed the way prices are looked up by the website - this should use a little less data per query from Marapets when we look up prices.</p>
+<p><strong>January 13th</strong> - Item database has been updated to the funky account upgrade. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for everything new.</p>
+</br>
+";
+#
 $about_desc = 
 "
 ". $mainpage_notice ."
@@ -76,14 +87,5 @@ to remove any names from our leaderboard that may not be suitable for some peopl
 </br>
 ";
 
-$var_item_updatetxt = 
-"
-". $mainpage_notice ."
-<h3>Recent News</h3>
-<p><strong>January 13th</strong> - Item database has been updated to the funky account upgrade. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for everything new.</p>
-<p><strong>January 1st</strong> - Added recent averages along with all-time averages for prices. Recent prices are calculated from the 15 most recent prices logged by Maralook.</p>
-</br>
-
-";
 
 ?>
