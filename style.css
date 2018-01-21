@@ -9,6 +9,6 @@ table{font-size:8pt;text-align:center}
 table,th,td{background-color:#fff;text-align:center;font-weight:400}
 .reg{font-size:8pt;font-weight:400}
 .bolded{font-weight:700;color:#6D7ACE}
-.bolded-dred{font-weight:700;color:#C13232!important;font-size:9pt!important;}
-.bolded-green{font-weight:700;color:#2B9100!important;font-size:9pt!important;}
+.bolded-dred{font-weight:700;color:#C13232!important;font-size:9pt!important}
+.bolded-green{font-weight:700;color:#2B9100!important;font-size:9pt!important}
 th,td{padding:2px}

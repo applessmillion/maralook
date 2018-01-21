@@ -27,7 +27,7 @@ $var_item_updatetxt =
 #
 $about_desc = 
 "
-<h3>This page is currently under construction! It'll be a lot more useful soon.<br>
+<h3 style='color:#C13232!'>This page is currently under construction! It'll be a lot more useful soon.<br>
 Need to contact us? Shoot us an email at maralook@jadefury.com.</h3>
 Maralook is a tool for new and experienced players to find useful 
 pricing information. Maralook allows anyone to look up information on price history and list items by price.

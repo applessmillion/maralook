@@ -135,7 +135,7 @@ elseif(isset($_GET["info"])) {
             
             } else {
                 // this is the parent process, and we know the child process id is in $pid
-                sleep(6); // wait 4 seconds
+                sleep(5); // wait 4 seconds
                 posix_kill($pid, SIGKILL); // then kill the child
                 $marapage = '<h2 style="color:red;">Timed Out!</h2></br>Something prevented us from getting a live look at this item.</br>Try again later to add prices, for now, here is the history...';
                 echo "<th>" . $marapage . "</br></br></th>"; 
@@ -369,7 +369,8 @@ else {
 
     } else {
     // this is the parent process, and we know the child process id is in $pid
-    sleep(9); // wait 3 seconds
+    sleep(3); // wait 3 seconds
+	echo '<tr><th><table align="center"><tr>'; 
     posix_kill($pido, SIGKILL); // then kill the child
     }
     
