@@ -27,6 +27,6 @@ echo '</td>';
 echo '</tr></table>';
 }
 else{
-echo "This is simply here to not cause an internal error. You're missing a variable on this URL. Add it.";
+echo "Missing vars!";
 }
 ?>
