@@ -5,7 +5,7 @@ include_once 'vars.php';
 include_once('simple_html_dom.php');
 
 ##########CONNECTION INFO FOR DATABASE###########
-$data_connect;
+$con = new mysqli($ip,$user,$pw,$db);
 ############STARTING CONTENT#############
 
 #CODE FOR SEARCHING DATABASE AND PRINTING RESULTS#

@@ -1,11 +1,5 @@
 <?php
 ##########Technical Vars############
-$data_connect = "
-    $con = new mysqli($ip,$user,$pw,$db);
-    if ($con->connect_error) {
-		$con = new mysqli($ip,$user,$pw,$db);
-    }
-	";
 	
 $statuser = file_get_contents("http://www.maralook.com/stats.php?total-users");
 $statlog = 	file_get_contents("http://www.maralook.com/stats.php?total-logs");

@@ -4,14 +4,9 @@ include_once 'config.php';
 include_once 'vars.php';
 include_once('simple_html_dom.php');
 
-##################CONNECTION INFO FOR DATABASE###################
-    $con = new mysqli($ip,$user,$pw,$db);
-    if ($con->connect_error) {
-        echo "Failed to connect to MySQL: " . $con->connect_error;
-    }
-    
-########################STARTING CONTENT#########################
+$con = new mysqli($ip,$user,$pw,$db);
 
+########################STARTING CONTENT#########################
 
 #CODE FOR SEARCHING DATABASE AND PRINTING RESULTS#
 if(isset($_GET["search"])) {
