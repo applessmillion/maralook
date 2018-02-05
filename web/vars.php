@@ -14,22 +14,23 @@ $var_item_updatetxt =
 "
 ". $mainpage_notice ."
 <h3>Recent News</h3>
-<p><strong>January 15th</strong> - Backend changes. Changed the way prices are looked up by the website - this should use a little less data per query from Marapets when we look up prices.</p>
-<p><strong>January 13th</strong> - Item database has been updated to the funky account upgrade. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for everything new.</p>
+<p><strong>February 5th</strong> - Item database has been updated to the Heartless box. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for everything new.</p>
 </br>
 ";
 #
 $about_desc = 
 "
-<h3 style='color:#C13232!'>This page is currently under construction! It'll be a lot more useful soon.<br>
-Need to contact us? Shoot us an email at maralook@jadefury.com.</h3>
-Maralook is a tool for new and experienced players to find useful 
-pricing information. Maralook allows anyone to look up information on price history and list items by price.
-</br></br>
+<h4>Mara Stats</h4><br>
+<hr style='border-color:#6D7ACE; width:50%;'>
 There have been <b>". $statuser ."</b> Users contributing to our website!
 </br>
 Maralook has logged <b>". $statlog ."</b> different prices on Marapets items!
 </br>
+Maralook is a tool for new and experienced players to find useful 
+pricing information. Maralook allows anyone to look up information on price history and list items by price.
+</br></br>
+Need to contact us about anything? Send an email to <b>maralook@jadefury.com</b> and we'll get back to you as soon as possible!
+
 ";
 
 $about_madeby = 
