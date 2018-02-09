@@ -20,15 +20,17 @@ $var_item_updatetxt =
 #
 $about_desc = 
 "
-<h4>Mara Stats</h4><br>
+<h3>Mara Stats</h3>
 <hr style='border-color:#6D7ACE; width:50%;'>
 There have been <b>". $statuser ."</b> Users contributing to our website!
 </br>
 Maralook has logged <b>". $statlog ."</b> different prices on Marapets items!
-</br>
+<br><br><br>
+<h3>What is Maralook?</h3>
+<hr style='border-color:#6D7ACE; width:50%;'>
 Maralook is a tool for new and experienced players to find useful 
 pricing information. Maralook allows anyone to look up information on price history and list items by price.
-</br></br>
+</br></br><br>
 Need to contact us about anything? Send an email to <b>maralook@jadefury.com</b> and we'll get back to you as soon as possible!
 
 ";
