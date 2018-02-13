@@ -7,13 +7,14 @@ $statlog = 	file_get_contents("http://www.maralook.com/stats.php?total-logs");
 
 #For important announcements
 $mainpage_notice = "";
+
 #########################
 
 #For news on main pages
 $var_item_updatetxt = 
 "
-". $mainpage_notice ."
 <h3>Recent News</h3>
+<p><strong>February 13th</strong> - Maralook will soon be publicly available on GitHub. You will be able to find the source soon.</p></br>
 <p><strong>February 5th</strong> - Item database has been updated to the Heartless box. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for everything new.</p>
 </br>
 ";
@@ -70,7 +71,6 @@ or view it on Maralook first. Price is determined on the last time the item was 
 
 $var_users_desc = 
 "
-". $mainpage_notice ."
 <p>Looking to become recognized as a <strong>Maralook Contributor</strong>? Now you can! Simply input your
 desired name into the box below. Upon submitting this name, you'll be searching and logging prices as that name!
 The number of successful price additions will be logged to your name in the scoreboard below. Maralook reserves the right
