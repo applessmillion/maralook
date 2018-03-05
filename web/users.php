@@ -18,9 +18,7 @@ $data_connect;
 	<body>
 		<div id="main">
 		<?php echo file_get_contents('header.html') . "</br>"; ?>
-		<img src="img/corner.png" width="9">
-		<img src="img/border.png" width="692" height="9" border="0">
-		<img src="img/corner2.png" width="9">
+		<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
 		<table align="center" width="710">
 <!-- End Init -->
 <?php
@@ -93,9 +91,7 @@ $data_connect;
 </tr>
 </table>
 </div>
-<img src="img/corner3.png" width="9" >
-<img src="img/border.png" width="692" height="9" border="0">
-<img src="img/corner4.png" width="9">
+<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9">
 </div>
 </body>
 </html>
