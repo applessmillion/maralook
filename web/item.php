@@ -4,6 +4,7 @@ include_once 'config.php';
 include_once 'vars.php';
 include_once('simple_html_dom.php');
 
+//Start connection to the database.
 $con = new mysqli($ip,$user,$pw,$db);
 
 ########################STARTING CONTENT#########################
@@ -135,25 +136,43 @@ elseif(isset($_GET["info"])) {
                 $marapage = '<h2 style="color:red;">Timed Out!</h2></br>Something prevented us from getting a live look at this item.</br>Try again later to add prices, for now, here is the history...';
                 echo "<th>" . $marapage . "</br></br></th>"; 
             }
+			
+			//SQL statement for all-time average.
             $avgsql = "SELECT AVG(PlayerPrice) from Pricelog WHERE ItemID='$iid';"; 
+			
+			//SQL statement for recent average. Averages recent 15 prices.
 			$avg2sql = "SELECT AVG(PlayerPrice) from ( SELECT PlayerPrice FROM Pricelog WHERE ItemID='$iid' ORDER BY Timestamp DESC LIMIT 15) AS QRY;"; 
+			
+			//SQL statement for all-time highest price.
 			$hisql = "SELECT * from Pricelog WHERE ItemID='$iid' ORDER BY PlayerPrice DESC LIMIT 1;"; 
+			
+			//SQL statement for all-time lowest price.
 			$losql = "SELECT * from Pricelog WHERE ItemID='$iid' ORDER BY PlayerPrice ASC LIMIT 1;"; 
             
-			$row= mysqli_fetch_array(mysqli_query($con, $avg2sql), MYSQL_ASSOC);             
-            $avg2p = $row['AVG(PlayerPrice)'];
-			
-			$row= mysqli_fetch_array(mysqli_query($con, $avgsql), MYSQL_ASSOC);             
-            $avgp = $row['AVG(PlayerPrice)'];
-			
-			$highs= mysqli_fetch_array(mysqli_query($con, $hisql), MYSQL_ASSOC);        
+			//Connect and execute recent average SQL, save result as $avg2p
+			$recentavg= mysqli_fetch_array(mysqli_query($con, $avg2sql), MYSQL_ASSOC);             
+            
+			//Connect and execute all-time average SQL, save result as $avgp
+			$allavg= mysqli_fetch_array(mysqli_query($con, $avgsql), MYSQL_ASSOC);             
+            
+			//Connect and execute all-time highest price SQL, save result as $hisql
+			$highs= mysqli_fetch_array(mysqli_query($con, $hisql), MYSQL_ASSOC);
+
+			//Connect and execute all-time lowest price SQL, save result as $losql
 			$lows= mysqli_fetch_array(mysqli_query($con, $losql), MYSQL_ASSOC);        
 			
+			//This stuff is a bit buggy. Needs testing later on.
 			#$datehi = $highs['Timestamp'];
 			#$datelo = $highs['Timestamp'];
+			
+			
+			//Saving the results of the above SQL queries.
 			$highp = $highs['PlayerPrice'];
 			$lowp = $lows['PlayerPrice'];
+			$avgp = $allavg['AVG(PlayerPrice)'];
+			$avg2p = $recentavg['AVG(PlayerPrice)'];
 
+			
             echo '<tr><th><hr style="border-color:#6D7ACE; width:55%;"></th></tr>';
             echo "<tr><th><h3>Recent Average: " . number_format($avg2p) ."MP</h3>";
 			echo "<tr><th><strong>All-Time Average: " . number_format($avgp) ."MP</strong>";

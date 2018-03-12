@@ -2,7 +2,7 @@
 /*
 This page is mainy used for displaying item information on the pages of
 said items on Maralook. It displays the image, wanted/shop info and URLs,
-along with the other usual stuff that pricechecker.php on ML shows.
+along with the other usual stuff that pricechecker.php on MP shows.
 */
 
 //Needed for the magic happening below.

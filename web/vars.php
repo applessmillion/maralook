@@ -2,7 +2,7 @@
 ##########Technical Vars############
 	
 $statuser = file_get_contents("http://www.maralook.com/stats.php?total-users");
-$statlog = 	file_get_contents("http://www.maralook.com/stats.php?total-logs");
+$statlog = 	file_get_contents("http://www.maralook.com/stats.php?total-logs&format");
 ######################
 
 #For important announcements
@@ -23,9 +23,9 @@ $about_desc =
 "
 <h3>Mara Stats</h3>
 <hr style='border-color:#6D7ACE; width:50%;'>
-There have been <b>". $statuser ."</b> Users contributing to our website!
+There have been <b>$statuser</b> Users contributing to our website!
 </br>
-Maralook has logged <b>". $statlog ."</b> different prices on Marapets items!
+Maralook has logged <b>$statlog</b> different prices on Marapets items!
 <br><br><br>
 <h3>What is Maralook?</h3>
 <hr style='border-color:#6D7ACE; width:50%;'>

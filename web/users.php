@@ -22,41 +22,35 @@ $data_connect;
 			<table align="center" width="710">
 <!-- End Init -->
 				<?php
-	
-	//SQL to find the most recent price log's ID. This is used instead of SUM to find number of logs.
-	$sqlcheck = "SELECT * FROM Pricelog ORDER BY Timestamp DESC LIMIT 1;";
-	$row=mysqli_fetch_array(mysqli_query($con, $sqlcheck), MYSQL_ASSOC);
-	$currows = $row['LogID'];
+				//Finds the total number of logs. Lots more efficient, and formats!
+				$statalllog = 	file_get_contents("http://www.maralook.com/stats.php?total-logs&format");
 
-	//Now we use the SUM to find the number of people who have put a name in.
-	$contribcheck = "SELECT SUM(Submissions) from Userboard";
-	$row2=mysqli_fetch_array(mysqli_query($con, $contribcheck), MYSQL_ASSOC);
-	$currows2 = $row2['SUM(Submissions)'];
+				//Finds the number of logs made by users. Much more efficient doing this on stats.php!
+				$statuserlog = 	file_get_contents("http://www.maralook.com/stats.php?user-logs&format");
 
-	//Find top 20 contributors.
-    $sql_top20 = mysqli_query($con, "SELECT * FROM Userboard ORDER BY Submissions DESC LIMIT 20");
-    $sql_top20_num = mysqli_num_rows($sql_top20);
+				//Find top 20 contributors. let's see if we can move this to stats.php soon.
+				$sql_top20 = mysqli_query($con, "SELECT * FROM Userboard ORDER BY Submissions DESC LIMIT 20");
+				$sql_top20_num = mysqli_num_rows($sql_top20);
     
-    echo '<tr><th><a href="users.php"><img src="img/contrib.gif"></a></th></tr>';
-    echo '<tr><th><h2>Maralook Contributors</h2></th></tr>';
-    echo '<tr><th>'. $var_users_desc .'</br></th></tr>';
-    echo '<tr><th>There are currently <strong>',$currows,'</strong> prices logged by Maralook!</br>';
-    echo 'Of those, <strong>',$currows2,'</strong> have been made by contributors!</th></tr>';
-    echo '<tr><th><hr style="border-color:#46C61F; width:45%;"></th></tr>';
-    $rank = 1;
-    while ($obj = mysqli_fetch_object($sql_top20)) {
-        echo "<tr align='left' width='350'><th >". $rank . ". <strong>" . $obj->Username . "</strong>, with  <strong>" . $obj->Submissions ."</strong> Prices<br /></th></tr>";
-        $rank = $rank+1;
+				echo '<tr><th><a href="users.php"><img src="img/contrib.gif"></a></th></tr>';
+				echo '<tr><th><h2>Maralook Contributors</h2></th></tr>';
+				echo '<tr><th>'. $var_users_desc .'</br></th></tr>';
+				echo '<tr><th>There are currently <strong>',$statalllog,'</strong> prices logged by Maralook!</br>';
+				echo 'Of those, <strong>',$statuserlog,'</strong> have been made by contributors!</th></tr>';
+				echo '<tr><th><hr style="border-color:#46C61F; width:45%;"></th></tr>';
+				
+				$rank = 1;
+				while ($obj = mysqli_fetch_object($sql_top20)) {
+					echo "<tr align='left' width='350'><th >". $rank . ". <strong>" . $obj->Username . "</strong>, with  <strong>" . $obj->Submissions ."</strong> Prices<br /></th></tr>";
+					$rank = $rank+1; 
+				}
+					//If the user is signed in, show them the username they have entered previously.
+					if(isset($_COOKIE[$cookiename])){
+						echo "<tr><th></br></br>Currently searching as <strong>" , $_COOKIE['ml_user'] , "</strong>.</tr></th>";
+					}
         
-    }
-        //If the user is signed in, show them the username they have entered previously.
-        if(isset($_COOKIE[$cookiename])){
-            echo "<tr><th></br></br>Currently searching as <strong>" , $_COOKIE['ml_user'] , "</strong>.</tr></th>";
-        }
-        
-		//If they are not signed in, allow them to. 
-        elseif(!isset($_COOKIE[$cookiename])){ 
-					?>
+					//If they are not signed in, allow them to. 
+					elseif(!isset($_COOKIE[$cookiename])){  ?>
 					<tr>
 						<th>
 							<br><br>
@@ -67,10 +61,8 @@ $data_connect;
 						</th>
 					</tr>
 		<?php } ?>
-<?php //Note - The below needs to be cleaned up. Appears to not be for anything. ?>
 			</table>
-		
 		<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9">
 		</div>
-		</body>
+	</body>
 </html>

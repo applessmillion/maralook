@@ -4,7 +4,7 @@ include_once 'config.php';
 <html>
 <!-- Initalize Page -->
 	<head>
-		<title>Is this kind of an API?</title>
+		<title>FUN STUFF.</title>
 	</head>
 
 <?php
@@ -12,11 +12,42 @@ $con = new mysqli($ip,$user,$pw,$db);
 
 #Returns total number of price logs Maralook has, well, logged
 if(isset($_GET['total-logs'])){
-$sql = "SELECT * FROM Pricelog ORDER BY Timestamp DESC LIMIT 1;";
-$row=mysqli_fetch_array(mysqli_query($con, $sql), MYSQL_ASSOC);
-$output = $row['LogID'];
+	
+	//Formats with commas and crap.
+	if(isset($_GET['format'])){
+		$sql = "SELECT * FROM Pricelog ORDER BY Timestamp DESC LIMIT 1;";
+		$row=mysqli_fetch_array(mysqli_query($con, $sql), MYSQL_ASSOC);
+		$output = $row['LogID'];
+		$output = number_format($output);
+		echo $output;
+	}
+	else{
+		$sql = "SELECT * FROM Pricelog ORDER BY Timestamp DESC LIMIT 1;";
+		$row=mysqli_fetch_array(mysqli_query($con, $sql), MYSQL_ASSOC);
+		$output = $row['LogID'];
 
-echo $output;
+		echo $output;
+	}
+}
+
+#Returns total number of price logs users have generated.
+if(isset($_GET['user-logs'])){
+	
+	//Formats with commas and crap.
+	if(isset($_GET['format'])){
+		$sql = "SELECT SUM(Submissions) from Userboard";
+		$row=mysqli_fetch_array(mysqli_query($con, $sql), MYSQL_ASSOC);
+		$output = $row['SUM(Submissions)'];
+		$output = number_format($output);
+		echo $output;
+	}
+	else{
+		$sql = "SELECT SUM(Submissions) from Userboard";
+		$row=mysqli_fetch_array(mysqli_query($con, $sql), MYSQL_ASSOC);
+		$output = $row['SUM(Submissions)'];
+
+		echo $output;
+	}
 }
 
 #Returns total users that have registered their name as a contributor
