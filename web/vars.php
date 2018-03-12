@@ -14,7 +14,7 @@ $mainpage_notice = "";
 $var_item_updatetxt = 
 "
 <h3>Recent News</h3>
-<p><strong>March 11th</strong><a href='https://github.com/applessmillion/maralook'> - Maralook's source is now available on GitHub.</a></p></br>
+<p><strong>March 11th</strong><a class='head' href='https://github.com/applessmillion/maralook'> - Maralook's source is now available on GitHub.</a></p></br>
 <p><strong>March 11th</strong> - Item database has been updated to the Heartless box. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for everything new.</p>
 </br>
 ";
