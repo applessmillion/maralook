@@ -30,6 +30,7 @@ if ($pido == 0) {
 	echo '</table>';
 	
 }
+
 //So here's what happens if Marapets is unresponsive.
 else{
 	
