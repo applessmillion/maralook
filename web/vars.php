@@ -28,8 +28,9 @@ Maralook has logged <b>$statlog</b> different prices on Marapets items!
 <br><br><br>
 <h3>What is Maralook?</h3>
 <hr style='border-color:#6D7ACE; width:50%;'>
-Maralook is a tool for new and experienced players to find useful 
-pricing information. Maralook allows anyone to look up information on price history and list items by price.
+Maralook is a tool for new and experienced players to find pricing information. 
+Maralook allows anyone to look up information on price history and list items by price.
+You can find info such as the current price of an item, it's average price, and the 15 most recent prices logged on an item.
 </br></br><br>
 Need to contact us about anything? Send an email to <b>maralook@jadefury.com</b> and we'll get back to you as soon as possible!
 ";
@@ -53,7 +54,10 @@ $item_desc =
 
 #Price - Main Description
 $price_desc = 
-"Price search allows you to search for items within the range you specify. Enter a minimum price and maximum price and you'll find up to 50 results in that range!";
+"
+Price search allows you to search for items within the range you specify. 
+Enter a minimum price and maximum price and you'll find up to 50 results in that range!
+";
 
 #Index - Main Description (kinda a combo of above)
 $index_desc = 
