@@ -25,12 +25,13 @@ include_once 'vars.php';
 				</th>
 			</tr>
 		<?php
-		echo    '<tr><th></br>',$var_item_updatetxt,'</br><p>';
-		echo        $index_desc;
+		echo    '<tr><th></br><p>',$index_desc,'</br></p>';
+		echo    $var_item_updatetxt;
 		?>
 			</p></th></tr>
 		</table>
 		<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9">
 		</div>
+		</br></br>
 	</body>
 </html> 
