@@ -40,15 +40,14 @@ Our source code is also now on GitHub! <a class='head' href='https://github.com/
 
 #About - Madeby bottom page
 $about_madeby = 
-"</br></br>Designed & programmed by Mexatox</br>
+"</br></br>Designed & programmed by <a class='head' href='https://www.jadefury.com'>Jadefury</a></br>
 Maintained by Mexatox and the Marapets community</br>
 ";
 
 #About - Needed stuff at bottom page
 $about_use = 
 "Marapets assets & stuff used With permission.</br>
-Copyright 2004-2018 <a href='www.marapets.com?ref=maralook'>Marapets.com</a> All Rights Reserved.</br>
-Website maintained by <a href='www.jadefury.com'>Jadefury</a>.</br>
+Copyright 2004-2018 <a class='head' href='http://www.marapets.com?ref=maralook'>Marapets.com</a> All Rights Reserved.</br>
 By using Maralook.com, you acknowledge that we use cookies to better your experience.";
 
 #Item - Main Description
