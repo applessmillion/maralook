@@ -363,30 +363,8 @@ else {
             echo '<tr><th>You are searching as <strong>'. $username .'</strong>.</th></tr>';
         }
         echo '<tr><td style="height:26px" ></td></tr>';
-        $pido = pcntl_fork();
-    if ($pido == 0) {
-        #echo "<tr><th><strong>NEW! <a class='reg' href='item.php?random'> Rando-matic Search!</a></strong><br><br></th></tr>";
-        echo '<tr><th><h2>Recently Updated Items...</h2></th></tr>';
-        
-        $search_query = mysqli_query($con, "SELECT Names.ItemID, Names.ItemName iName, Pricelog.LogID FROM Names INNER JOIN Pricelog ON Names.ItemID = Pricelog.ItemID ORDER BY Pricelog.LogID DESC LIMIT 3");
-        $search_nums = mysqli_num_rows($search_query);
-        
-        ?> 
-        
-        <tr><th><table align="center"><tr> 
-        
-        <?php
-        while ($obj = mysqli_fetch_object($search_query)) {
-            $iid = $obj->ItemID;
-            echo "<td><a class='reg' href='item.php?info=" . urlencode($obj->iName) . "'>" . file_get_html("http://maralook.com/simplelisting.php?id=$iid") . "</a></td>";
-        }
 
-    } else {
-    // this is the parent process, and we know the child process id is in $pid
-    sleep(3); // wait 3 seconds
-	echo '<tr><th><table align="center"><tr>'; 
-    posix_kill($pido, SIGKILL); // then kill the child
-    }
+		echo '<tr><th><table align="center"><tr>'; 
     
     echo '</tr></table></th></tr>';
 
