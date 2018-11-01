@@ -18,6 +18,7 @@ include_once 'vars.php';
 			<table align="center" width="710">
 				<tr>
 					<th>
+						<img src="img/about_image.png">
 						<h2>About Maralook</h2>
 					</th>
 				</tr>
