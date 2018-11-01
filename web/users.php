@@ -1,8 +1,8 @@
 <?php
 #INCLUDE THE FOLLOWING TO MAKE THE REST WORK#
-include_once 'config.php';
-include_once 'vars.php';
-include_once 'setuser.php';
+require_once 'config.php';
+require_once 'vars.php';
+require_once 'setuser.php';
 
 ##################CONNECTION INFO FOR DATABASE###################
 $data_connect;
@@ -23,21 +23,36 @@ $data_connect;
 <!-- End Init -->
 				<?php
 				//Finds the total number of logs. Lots more efficient, and formats!
-				$statalllog = 	file_get_contents("http://www.maralook.com/stats.php?total-logs&format");
+				$statalllog = file_get_contents("http://www.maralook.com/stats.php?total-logs&format");
 
 				//Finds the number of logs made by users. Much more efficient doing this on stats.php!
-				$statuserlog = 	file_get_contents("http://www.maralook.com/stats.php?user-logs&format");
+				$statuserlog = file_get_contents("http://www.maralook.com/stats.php?user-logs&format");
 
-				//Find top 20 contributors. let's see if we can move this to stats.php soon.
+				//Find top 20 contributors.
 				$sql_top20 = mysqli_query($con, "SELECT * FROM Userboard ORDER BY Submissions DESC LIMIT 20");
 				$sql_top20_num = mysqli_num_rows($sql_top20);
-    
-				echo '<tr><th><a href="users.php"><img src="img/contrib.gif"></a></th></tr>';
-				echo '<tr><th><h2>Maralook Contributors</h2></th></tr>';
+				?>
+				<tr>
+					<th>
+						<a href="users.php"><img src="img/contrib.gif"></a>
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<h2>Maralook Contributors</h2>
+					</th>
+				</tr>
+				<?php 
 				echo '<tr><th>'. $var_users_desc .'</br></th></tr>';
 				echo '<tr><th>There are currently <strong>',$statalllog,'</strong> prices logged by Maralook!</br>';
 				echo 'Of those, <strong>',$statuserlog,'</strong> have been made by contributors!</th></tr>';
-				echo '<tr><th><hr style="border-color:#46C61F; width:45%;"></th></tr>';
+				?>
+				<tr>
+					<th>
+						<hr style="border-color:#46C61F; width:45%;">
+					</th>
+				</tr>
+				<?php
 				
 				$rank = 1;
 				while ($obj = mysqli_fetch_object($sql_top20)) {
