@@ -2,8 +2,8 @@
 #########################
 #  TECHNICAL VARIABLES  #
 #########################
-$statuser = file_get_contents("http://www.maralook.com/stats.php?total-users");
-$statlog = 	file_get_contents("http://www.maralook.com/stats.php?total-logs&format");
+$statuser = file_get_contents("stats.php?total-users");
+$statlog = 	file_get_contents("stats.php?total-logs&format");
 
 
 
