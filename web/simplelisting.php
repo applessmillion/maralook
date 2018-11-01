@@ -16,7 +16,7 @@ if ($pido == 0) {
 	include_once('simple_html_dom.php');
 
 	//Grab the pricechecker page from Marapets.
-	$html = file_get_html('http://www.marapets.com/pricechecker.php?id=' . $_GET["id"] . '&marasite=1');
+	$html = file_get_html('pricechecker.php?id=' . $_GET["id"] . '&marasite=1');
 
 	//Grab the picture and name from the page.
 	foreach($html->find('img[border="0"]') as $picture); 
@@ -49,7 +49,7 @@ else{
 	
 	//Display a blank image and the name retrieved from our database.
 	echo '<table align="center" width="100">';
-	echo '<tr><td width="84"><img src="http://www.maralook.com/img/buffer.png"></td></tr>';
+	echo '<tr><td width="84"><img src="img/buffer.png"></td></tr>';
 	echo '<tr><td><b style="font-size:8pt;color:darkblue">'.$itemname.'</b></br>';
 	echo '</td></tr>';
 	echo '</table>';

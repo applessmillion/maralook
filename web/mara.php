@@ -40,7 +40,7 @@ if(isset($_GET['name'])){
     echo 'Getting names for IDs ' . $_GET['start'] . ' through ' . $_GET['end'] . '!</br></br>';
     echo "ItemID,ItemName<br>";
 	while ($x<=$end){
-		$html = file_get_html('http://www.marapets.com/pricechecker.php?id='.$x.'&small=1&marasite=1');
+		$html = file_get_html('pricechecker.php?id='.$x.'&small=1&marasite=1');
 		foreach($html->find('font[size="+1"] b') as $element) 
 		echo $x . "," . $element->plaintext . ",,0<br>";
 		$x++;
@@ -52,7 +52,7 @@ if(isset($_GET['name'])){
 elseif(isset($_GET['price'])){
     echo 'Setting prices for IDs ' . $_GET['start'] . ' through ' . $_GET['end'] . '!<br>';
 	while ($x<=$end){
-        $marapage = file_get_html('http://www.marapets.com/pricechecker.php?id=' . $x.'&small=1&marasite=1');
+        $marapage = file_get_html('pricechecker.php?id=' . $x.'&small=1&marasite=1');
         
 		foreach($marapage->find('a font[color="#5F148D"]') as $pprice); 
         $pprice = preg_replace("/[^0-9.]/", "", $pprice->plaintext);

@@ -13,7 +13,7 @@ from the other file. If not, it'll break and tell you! */
 if(isset($_GET['id'])){
 	
 	//Opens the 
-	$html = file_get_html('http://www.marapets.com/pricechecker.php?id=' . $_GET["id"] . '&marasite=1');
+	$html = file_get_html('pricechecker.php?id=' . $_GET["id"] . '&marasite=1');
 
 	//Save the picture as variable.
 	foreach($html->find('img[border="0"]') as $picture);
@@ -44,11 +44,11 @@ if(isset($_GET['id'])){
 	echo '<b style="color: darkorange;">Rarity ' , $rarityno , ' </b>';
 	
 	//Display wanted text, with link to the wanted page.
-	echo '<b style="color: darkblue;"><a href="http://www.marapets.com/wanted.php?do=browse&id=', $_GET["id"] ,
+	echo '<b style="color: darkblue;"><a href="wanted.php?do=browse&id=', $_GET["id"] ,
 		 '" style="font-size:100%;">' , $wantno , ' Wanted', '</a></b></br>' , $shop , '</i></br>'; 
 		 
 	//Display shop text with a link to the shop search page for the item.
-	echo '<a target="_blank" href="http://www.marapets.com/shopsearch.php?do=' , $name->plaintext ,
+	echo '<a target="_blank" href="shopsearch.php?do=' , $name->plaintext ,
 		 '" style="font-size:100%;">', $playershop , '</a></br>';
 	echo '</td></tr>';
 	echo '</table>';

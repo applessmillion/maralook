@@ -80,8 +80,8 @@ elseif(isset($_GET["info"])) {
             $pid = pcntl_fork();
             if ($pid == 0) {
                 try {
-                $marapage = file_get_html('http://maralook.com/pricecopier.php?id=' . $iid);
-                echo '<tr><th>' . file_get_html("http://maralook.com/pricecopier.php?id=$iid") . '</th></tr>';
+                $marapage = file_get_html('pricecopier.php?id=' . $iid);
+                echo '<tr><th>' . file_get_html("pricecopier.php?id=$iid") . '</th></tr>';
                 }
                 catch(Exception $e3){
                 echo 'Error: Could not fetch item info. Refresh and try again';
@@ -235,8 +235,8 @@ elseif(isset($_GET["random"])) {
             $pid = pcntl_fork();
             if ($pid == 0) {
                 try {
-                $marapage = file_get_html('http://maralook.com/pricecopier.php?id=' . $iid);
-                echo '<tr><th>' . file_get_html("http://maralook.com/pricecopier.php?id=$iid") . '</th></tr>';
+                $marapage = file_get_html('pricecopier.php?id=' . $iid);
+                echo '<tr><th>' . file_get_html("pricecopier.php?id=$iid") . '</th></tr>';
                 }
                 catch(Exception $e3){
                 echo 'Error: Could not fetch item info. Refresh and try again';

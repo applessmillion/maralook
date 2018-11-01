@@ -23,10 +23,10 @@ $data_connect;
 <!-- End Init -->
 				<?php
 				//Finds the total number of logs. Lots more efficient, and formats!
-				$statalllog = file_get_contents("http://www.maralook.com/stats.php?total-logs&format");
+				$statalllog = file_get_contents("stats.php?total-logs&format");
 
 				//Finds the number of logs made by users. Much more efficient doing this on stats.php!
-				$statuserlog = file_get_contents("http://www.maralook.com/stats.php?user-logs&format");
+				$statuserlog = file_get_contents("stats.php?user-logs&format");
 
 				//Find top 20 contributors.
 				$sql_top20 = mysqli_query($con, "SELECT * FROM Userboard ORDER BY Submissions DESC LIMIT 20");
