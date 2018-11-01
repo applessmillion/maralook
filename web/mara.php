@@ -1,15 +1,24 @@
 <?php
-/* This page is a funny page, probably shouldn't be used by
-anyone that doesn't know how to properly use it. This is how
-I update items in bulk. Could have easier ways, but this is 
-what works for the time being. I won't comment on this or say
-how it functions, as again, it probably shouldn't be used by 
-anyone else.
+/* 
+Requires the magic that can be found here: https://sourceforge.net/projects/simplehtmldom/
+Throw that file in your main directory and this page (along with a few others) will start working.
+
+Here's how this page works - 
+
+For names and prices simply enter the start and end ID. 
+
+Here's an example for names: mara.php?name&start=1&end=10
+This will display the ID and name of the items with the ID 1-10.
+
+Here's an example for prices: mara.php?price&start=1&end=10
+This will display if the price gets updated or not. The price will not be visible.
+You will also be told if there is no current price for the item, or if it is the same as the last entry.
+Optionally, you can FORCE an entry for items. This will ignore the time requirement for a new entry. Just add &force
 */
 
 //Include this stuff for connecting & crawling
 include_once 'config.php';
-include_once('simple_html_dom.php');
+require_once 'simple_html_dom.php';
 
 ##################CONNECTION INFO FOR DATABASE###################
 $con = new mysqli($ip,$user,$pw,$db);
