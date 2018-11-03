@@ -36,6 +36,9 @@ if(isset($_GET['name'])){
 	while ($x<=$end){
 		$html = file_get_html('https://www.marapets.com/pricechecker.php?id=' . $x . '&marasite=1');
 		foreach($html->find('font["size+1"] b') as $name);
+		
+		//Some IDs got skipped. The ones that are not items are called - Price Checker -.
+		//Below we just weed those out so they don't clutter our data.
 		if($name->plaintext == "- Price Checker - "){
 		}
 		else{
