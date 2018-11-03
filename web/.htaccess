@@ -1,0 +1,3 @@
+#Handles error page redirections. Change as needed.
+ErrorDocument 404 /maralook/web/error/404.php
+ErrorDocument 500 /maralook/web/error/500.php

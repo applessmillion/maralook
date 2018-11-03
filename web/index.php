@@ -1,5 +1,5 @@
 <?php
-include_once 'vars.php';
+require_once 'vars.php';
 ?>
 <html>
 	<head>
