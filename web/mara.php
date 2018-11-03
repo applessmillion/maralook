@@ -17,8 +17,9 @@ Optionally, you can FORCE an entry for items. This will ignore the time requirem
 */
 
 //Include this stuff for connecting & crawling
-include_once 'config.php';
+require_once 'config.php';
 require_once 'simple_html_dom.php';
+require_once 'vars.php';
 
 ##################CONNECTION INFO FOR DATABASE###################
 $con = new mysqli($ip,$user,$pw,$db);
@@ -74,12 +75,12 @@ elseif(isset($_GET['price'])){
                     $con->query($sql_lastprice);
                     echo 'ID'.$x.' - Price FORCIBLY Updated.</br>';
                 }
-                elseif(($curtime-$time) >= 20250 AND $pprice != $curprice) {
+                elseif(($curtime-$time) >= $var_logging_cooldown AND $pprice != $curprice) {
                     $con->query($sql_logprice);
                     $con->query($sql_lastprice);
                     echo 'ID'.$x.' - Price Updated.</br>';
                 }
-                elseif($pprice = $curprice AND ($curtime-$time) >= 20250) {
+                elseif($pprice = $curprice AND ($curtime-$time) >= $var_logging_cooldown) {
                     echo 'ID'.$x.' - No Change in price.</br>';
                 }                
 		$x++;

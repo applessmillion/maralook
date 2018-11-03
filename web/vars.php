@@ -1,10 +1,6 @@
 <?php
-#########################
-#    STAT VARIABLES     #
-#########################
-$statuser = file_get_contents("stats.php?total-users");
-$statlog = 	file_get_contents("stats.php?total-logs&format");
-
+/* File for editing text and variables for most of the pages on the site.
+   To edit database values, check out config.php. */
 #########################
 #   USEFUL VARIABLES    #
 #########################
@@ -14,6 +10,9 @@ $link_github = "https://github.com/applessmillion/maralook";
 
 $webpage_border_color = "#6D7ACE";
 $webpage_border_length = "50%";
+
+#Time until an item can get an update to it's current price.
+$var_logging_cooldown = 29000;
 
 $text_recentnews_first_date = "October 31, 2018";
 $text_recentnews_first_text = "Example news. Check out the news below for a <strong>real</strong> entry.";
@@ -126,5 +125,12 @@ A Marapets community project. Originally maintained by Mexatox.</br>
 #About - Needed stuff at bottom page
 $about_use = $copyright_notice . "<br>
 By using Maralook.com, you acknowledge that we use cookies to customize your experience.";
+
+
+#########################
+#    STAT VARIABLES     #
+#########################
+$statuser = file_get_contents("stats.php?total-users");
+$statlog = 	file_get_contents("stats.php?total-logs&format");
 
 ?>

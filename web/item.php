@@ -121,7 +121,7 @@ elseif(isset($_GET["info"])) {
                         }
                     }
                 
-                    elseif($pprice = $curprice AND ($curtime-$time) >= 29250) {
+                    elseif($pprice = $curprice AND ($curtime-$time) >= $var_logging_cooldown) {
                         echo '<tr><th style="font-size: 90%; color: #E59437">It seems the price has not changed since last checked!</th></tr>';
                     }
                 } catch (Exception $e) {
@@ -276,7 +276,7 @@ elseif(isset($_GET["random"])) {
                         }
                     }
                 
-                    elseif($pprice = $curprice AND ($curtime-$time) >= 29250) {
+                    elseif($pprice = $curprice AND ($curtime-$time) >= $var_logging_cooldown) {
                         echo '<tr><th style="font-size: 90%; color: #E59437">It seems the price has not changed since last checked!</th></tr>';
                     }
                 } catch (Exception $e) {
@@ -328,34 +328,52 @@ else {
     
         #STARTING HTML BEGIN#
 ?>    
-			<html>
-			<!-- Initalize Page -->
-				<head>
-					<title>Maralook - Item Search</title>
-					<link rel="stylesheet" type="text/css" href="style.css">
-				</head>
-				<body>
-					<div id="main">
-					<?php echo file_get_contents('header.html') . "</br>"; ?>
-					<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
-					<table align="center" width="710">
-			<!-- End Init -->
-
-
-        <tr><th><a href="item.php"><img src="img/search-item.png"></img></a></th></tr>
-        <tr><th><img src="img/titles/item-search.png"></img></th></tr>
-        <tr><td style="height:8px" ></td></tr>
-        <tr><th>
-        <p> <?php include_once 'vars.php'; 
-			echo $item_desc; ?> 
-		</p>
-        </th></tr>
-        <tr><td style="height:10px" ></td></tr>
-        <tr><th>
-        <form action="item.php" method="get">
-        <strong>Search a Name:</strong> <input type="text" name="search">
-        <input type="submit" value="Search">
-        </form>
+<html>
+<!-- Initalize Page -->
+	<head>
+		<title>Maralook - Item Search</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="main">
+			<?php echo file_get_contents('header.html') . "</br>"; ?>
+				<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
+				<table align="center" width="710">
+<!-- End Init -->
+					<tr>
+						<th>
+							<a href="item.php">
+								<img src="img/search-item.png">
+							</a>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<img src="img/titles/item-search.png">
+						</th>
+					</tr>
+					<tr>
+						<td style="height:8px"></td>
+					</tr>
+					<tr>
+						<th>
+							<p>
+								<?php 
+								include_once 'vars.php'; 
+								echo $item_desc; 
+								?> 
+							</p>
+						</th>
+					</tr>
+					<tr>
+						<td style="height:10px" ></td>
+					</tr>
+					<tr>
+						<th>
+							<form action="item.php" method="get">
+								<strong>Search a Name:</strong> <input type="text" name="search">
+								<input type="submit" value="Search">
+							</form>
         
         <?php
         if(isset($_COOKIE['ml_user'])){
@@ -373,9 +391,10 @@ echo '<tr><td style="height:10px"><br>'.$var_item_updatetxt.'</td></tr>';
 }    
 ?>
 <tr><td style="height:10px"></td></tr>
-</table>
-<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9"></div>
-</body></html>
+			</table>
+		<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9"></div>
+	</body>
+</html>
 
 <?php
 mysqli_close($con);

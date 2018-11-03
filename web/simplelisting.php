@@ -13,10 +13,10 @@ $pido = pcntl_fork();
 if ($pido == 0) {
 	
 	//Since our other option won't scan MP, we only need this here.
-	include_once('simple_html_dom.php');
+	require_once('simple_html_dom.php');
 
 	//Grab the pricechecker page from Marapets.
-	$html = file_get_html('pricechecker.php?id=' . $_GET["id"] . '&marasite=1');
+	$html = file_get_html('https://www.marapets.com/pricechecker.php?id=' . $_GET["id"] . '&marasite=1');
 
 	//Grab the picture and name from the page.
 	foreach($html->find('img[border="0"]') as $picture); 
