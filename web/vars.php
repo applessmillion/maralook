@@ -1,14 +1,12 @@
 <?php
 #########################
-#  TECHNICAL VARIABLES  #
+#    STAT VARIABLES     #
 #########################
 $statuser = file_get_contents("stats.php?total-users");
 $statlog = 	file_get_contents("stats.php?total-logs&format");
 
-
-
 #########################
-#    USEFUL VARIABLES   #
+#   USEFUL VARIABLES    #
 #########################
 $mainpage_notice = "";
 $contact_email = "email@example.com";
@@ -22,7 +20,15 @@ $text_recentnews_first_text = "Example news. Check out the news below for a <str
 $text_recentnews_second_date = "April 26th";
 $text_recentnews_second_text = "Item database has been updated to the new Newth Racing Prizes. Check <a class='head' href='http://www.marapets.com/wishlist.php?do=newest&page=0'>the wishlist</a> for Marapet's newest items.";
 
-
+#########################
+# ERROR PAGE VARIABLES  #
+#########################
+$error404_page_title = "Maralook - Internal Server Error (500)";
+$error404_page_headtext = "Error - Internal Server Error";
+$error404_page_description = "<center>The page you're looking for couldn't be found. Try <a href='../'>returning home</a>. If you think this is an error, feel free to contact us at ".$contact_email.".</center>";
+$error500_page_title = "Maralook - Page Not Found ";
+$error500_page_headtext = "Error - Page Not Found";
+$error500_page_description = "<center>Looks like our server is having some trouble. Try refreshing, and if the problem persists, feel free to contact us at ".$contact_email.".</center>";
 
 #########################
 #  WEBPAGE TEXT BLOCKS  #
@@ -86,6 +92,10 @@ you might even make it on the leaderboards! Maralook reserves the right to remov
 </br>
 ";
 
+#Copyright notice for MaraPets. Required. Change only when needed/requested.
+$copyright_notice = "
+Copyright <a class='head' href='http://www.marapets.com'>www.MaraPets.com</a> All Rights Reserved. Used With Permission.";
+
 #About - Main Descritpion
 $about_desc = 
 "
@@ -114,8 +124,7 @@ A Marapets community project. Originally maintained by Mexatox.</br>
 ";
 
 #About - Needed stuff at bottom page
-$about_use = 
-"Marapets assets & stuff used with permission.</br>
-Copyright 2004-2018 <a class='head' href='http://www.marapets.com'>Marapets.com</a> All Rights Reserved.</br>
-By using Maralook.com, you acknowledge that we use cookies to better your experience and customize your experience.";
+$about_use = $copyright_notice . "<br>
+By using Maralook.com, you acknowledge that we use cookies to customize your experience.";
+
 ?>

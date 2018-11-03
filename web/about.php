@@ -1,6 +1,8 @@
 <?php
 //Include pages for variables for texts
 include_once 'vars.php';
+
+
 ?>
 
 <html>
@@ -24,12 +26,13 @@ include_once 'vars.php';
 				</tr>
 				<tr>
 					<th>
-						<p><br>
-						<?php echo $about_desc; ?>
+						<p>
+							<br>
+							<?php echo $about_desc; ?>
 						</p>
 					</th>
 				</tr>
-				<?php echo '<tr><th style="font-size: 85%;">'.$about_madeby.'</br>'.$about_use.'</th></tr>'; ?>
+				<?php echo '<tr><th style="font-size: 85%;">'.$about_madeby.'<br>'.$about_use.'</th></tr>'; ?>
 			</table>
 			<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9">
 		</div>
