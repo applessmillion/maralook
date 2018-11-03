@@ -20,13 +20,6 @@ Optionally, you can FORCE an entry for items. This will ignore the time requirem
 require_once 'config.php';
 require_once 'simple_html_dom.php';
 require_once 'vars.php';
-
-##################CONNECTION INFO FOR DATABASE###################
-$con = new mysqli($ip,$user,$pw,$db);
-
-if ($con->connect_error) {
-    echo "Failed to connect to MySQL: " . $con->connect_error;
-}
     
 ########################STARTING CONTENT#########################
 
@@ -39,11 +32,15 @@ echo '<b>Marapets Name and Prices</b></br>';
 //When using for getting names...    
 if(isset($_GET['name'])){
     echo 'Getting names for IDs ' . $_GET['start'] . ' through ' . $_GET['end'] . '!</br></br>';
-    echo "ItemID,ItemName<br>";
+    echo "ItemID,ItemName,ItemSecondaryName,LastPrice<br>";
 	while ($x<=$end){
-		$html = file_get_html('pricechecker.php?id='.$x.'&small=1&marasite=1');
-		foreach($html->find('font[size="+1"] b') as $element) 
-		echo $x . "," . $element->plaintext . ",,0<br>";
+		$html = file_get_html('https://www.marapets.com/pricechecker.php?id=' . $x . '&marasite=1');
+		foreach($html->find('font["size+1"] b') as $name);
+		if($name->plaintext == "- Price Checker - "){
+		}
+		else{
+			echo $x . "," . $name->plaintext . ",,0<br>";
+		}
 		$x++;
 		usleep(2);
 	}
@@ -51,6 +48,15 @@ if(isset($_GET['name'])){
 
 //When using to get prices...
 elseif(isset($_GET['price'])){
+	
+	##################CONNECTION INFO FOR DATABASE###################
+	$con = new mysqli($ip,$user,$pw,$db);
+
+	if ($con->connect_error) {
+		echo "Failed to connect to MySQL: " . $con->connect_error;
+	}
+	###
+	
     echo 'Setting prices for IDs ' . $_GET['start'] . ' through ' . $_GET['end'] . '!<br>';
 	while ($x<=$end){
         $marapage = file_get_html('pricechecker.php?id=' . $x.'&small=1&marasite=1');
