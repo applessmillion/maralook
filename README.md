@@ -1,5 +1,13 @@
-# maralook
-Maralook was created in early 2017 with the intent of providing a price history for items on marapets.com.
-Maralook has since been made public for improvements, and can be used and shared freely under the terms of the GNU General Public License v3.0.
+![logo](https://raw.githubusercontent.com/applessmillion/maralook/master/logo.png)
 
-The project is rarely updated. Improvements will be made and accepted when needed. While the project was developed and run on PHP5, the current state of the project has been tested successfully with PHP7 with no errors.
+## About Maralook
+Maralook was created in early 2017 with the intent of providing a price history for items on marapets.com.
+The project is rarely updated. Improvements will be made and accepted when needed.
+
+Parts of Maralook utilize [this project](https://sourceforge.net/projects/simplehtmldom/). It has been included in the project modified to work with PHP5 and 7.
+
+## Copyright and License
+Images and various media copyright by www.MaraPets.com. All Rights Reserved. Used With Permission. <br>
+Acknowledging Jose Solorzano (https://sourceforge.net/projects/php-html/)<br>
+Project copyright by Benjamin Robert.<br>
+Maralook is licensed under the terms of the GNU General Public License v3.0.
