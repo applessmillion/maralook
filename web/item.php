@@ -10,38 +10,68 @@ $con = new mysqli($ip,$user,$pw,$db);
 ########################STARTING CONTENT#########################
 
 #CODE FOR SEARCHING DATABASE AND PRINTING RESULTS#
-if(isset($_GET["search"])) {
-?>    
-<html>
-<!-- Initalize Page -->
-	<head>
-		<title>Maralook - Item Search</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-	<body>
-		<div id="main">
-		<?php echo file_get_contents('header.html') . "</br>"; ?><img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
-		<table align="center" width="710">
-<!-- End Init -->
-<?php
-    $name = $_GET["search"];
-    #GET NAME FROM SEARCH TERMS#
-    $search_query = mysqli_query($con, "SELECT * FROM Names WHERE ItemName like '%$name%' OR SecondaryName like '%$name%' ORDER BY ItemName ASC LIMIT 50");
-    $search_nums = mysqli_num_rows($search_query);
-    
-    echo '<tr><th><a href="item.php"><img src="img/search-item.png"></a></th></tr>';
-    echo '<tr><th><h2>Found '. $search_nums .' results for "'. $_GET["search"] . '"...</h2></th></tr>';
-    echo '<tr><th><hr style="border-color:#6D7ACE; width:55%;"></th></tr>';
-    while ($obj = mysqli_fetch_object($search_query)) {
-        echo "<tr><th><a class='reg' href='?info=" . urlencode($obj->ItemName) . "'> " . $obj->ItemName;
-        if($obj->SecondaryName != NULL)
-        {
-           echo "  (" . $obj->SecondaryName . ") </a><br /></th></tr>";
-        }        
-    }   
-    echo '<tr><td style="height:20px;"></br><a href="javascript:history.go(-1)">Back to Search...</a></td></tr>';
-}
-
+if(isset($_GET["search"])) { ?>    
+	<?php
+	### Grab search term from URL and convert to $name.
+		$name = $_GET["search"];
+						
+	### SQL queries and such for use later.
+		$search_query = mysqli_query($con, "SELECT * FROM Names WHERE ItemName like '%$name%' OR SecondaryName like '%$name%' ORDER BY ItemName ASC LIMIT 50");
+		$search_nums = mysqli_num_rows($search_query);
+	?>
+	<html>
+		<head>
+			<title>Maralook - Item Search</title>
+			<link rel="stylesheet" type="text/css" href="style.css">
+		</head>
+		<body>
+			<div id="main">
+				<?php echo file_get_contents('header.html') ?>
+				</br>
+				<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
+				<table align="center" width="710">
+					<thead>
+						<tr>
+							<th>
+								<a href="item.php"><img src="img/search-item.png"></a>
+								</br>
+								<h2>Found <?php echo $search_nums; ?> results for <i><?php echo $name; ?></i>...</h2>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>
+								<hr style="border-color:#6D7ACE; width:55%;">
+							</th>
+						</tr>
+						<?php
+							while ($obj = mysqli_fetch_object($search_query)) { 
+						?>
+						<tr>
+							<th>
+								<a class='reg' href='?info=<?php urlencode($obj->ItemName); ?>'> <?php $obj->ItemName; ?>
+								<?php 
+									if($obj->SecondaryName != NULL){
+										### No use dividing this up.
+										echo " (" . $obj->SecondaryName . ")";
+									}
+								?> 
+								</a>
+								</br>
+							</th>
+						</tr>
+						<?php } ?>
+						<tr>
+							<td style="height:20px;">
+								</br>
+								<a href="javascript:history.go(-1)">Back to Search...</a>
+							</td>
+						</tr>
+					</tbody>
+<?php ## TABLE BODY CLOSED DOWN AT BOTTOM. FIX LATER. ## 
+}?>
+<?php 
 #CODE FOR RETRIEVING DATA OF ITEM AND PRINTING RESULTS#
 elseif(isset($_GET["info"])) {
         
