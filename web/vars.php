@@ -144,7 +144,5 @@ $tech_html_head_start_body = $tech_css_js_styleimports . '<body style="backgroun
 #########################
 # DEPRECATED VARIABLES  #
 #########################
-$statuser = file_get_contents("stats.php?total-users");
-$statlog = 	file_get_contents("stats.php?total-logs&format");
 $about_madeby =  "Deprecated. Use text_general_credit";
 ?>
