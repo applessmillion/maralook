@@ -10,15 +10,14 @@ $con = new mysqli($ip,$user,$pw,$db);
 ########################STARTING CONTENT#########################
 
 #CODE FOR SEARCHING DATABASE AND PRINTING RESULTS#
-if(isset($_GET["search"])) { ?>    
-	<?php
+if(isset($_GET["search"])){  
 	### Grab search term from URL and convert to $name.
 		$name = $_GET["search"];
 						
 	### SQL queries and such for use later.
 		$search_query = mysqli_query($con, "SELECT * FROM Names WHERE ItemName like '%$name%' OR SecondaryName like '%$name%' ORDER BY ItemName ASC LIMIT 50");
 		$search_nums = mysqli_num_rows($search_query);
-	?>
+?>
 	<html>
 		<head>
 			<title>Maralook - Item Search</title>
@@ -70,8 +69,7 @@ if(isset($_GET["search"])) { ?>
 						</tr>
 					</tbody>
 <?php ## TABLE BODY CLOSED DOWN AT BOTTOM. FIX LATER. ## 
-}?>
-<?php 
+} 
 #CODE FOR RETRIEVING DATA OF ITEM AND PRINTING RESULTS#
 elseif(isset($_GET["info"])) {
         

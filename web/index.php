@@ -1,43 +1,38 @@
 <?php
-	require_once 'vars.php';
+require_once 'vars.php';
 ?>
-<html>
+<!DOCTYPE html>
 	<head>
 		<title>Maralook - Marapets Search</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body>
-		<div class="main">
-			<?php
-				echo    file_get_contents('header.html');
+	<?php echo $tech_html_head_start_body; ?>
+		<div>
+			<?php echo file_get_contents("gtag.html");
+				echo file_get_contents("header-new.html");
 			?>
-			<img src="img/corner.png" width="9"><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner2.png" width="9">
-			<table align="center" width="710">
-				<tr>
-					<th>
-						<h2>Welcome to Maralook</h2>
-						</br>
-					</th>
-				</tr>
-				<tr>
-					<th>
-						<img src="img/search-telescope.png" alt="marapets_search_telescope">
-					</th>
-				</tr>
-				<tr>
-					<th>
-					</br>
-						<p>
-							<?php 
-								echo $index_desc;
-								echo $var_item_updatetxt;
-							?>
-						</p>
-					</th>
-				</tr>
-			</table>
-			<img src="img/corner3.png" width="9" ><img src="img/border.png" width="692" height="9" border="0"><img src="img/corner4.png" width="9">
+			</br>
 		</div>
-		</br></br>
+		<div class="container-fluid" style="<?php echo $webpage_maincontent_css; ?>">
+			<?php 
+				if($alert_text != ""){ echo $widget_webpage_alert;}
+				echo $webpage_topcontentbox;
+			?>
+			<tr>
+				<td>
+					<div class="text-center">
+						<img src="img/search-telescope.png" alt="Telescope" <?php echo $webpage_head_image_css; ?>>
+						<h2>Welcome to Maralook</h2>
+						<?php echo $widget_webpage_border; ?>
+					</div>
+					<p class="mx-5">
+						<?php echo $text_page_index_desc; ?>
+					</p>
+					<div class="text-center">
+						<p style="font-size:75%;"><?php echo $text_general_credit; ?></p> 
+					</div>
+				</td>
+			</tr>
+			<?php echo $webpage_bottomcontentbox; ?>
+		</div>
 	</body>
 </html> 
