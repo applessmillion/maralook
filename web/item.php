@@ -149,7 +149,7 @@ elseif(isset($_GET["info"])) {
                         }
                     }
                 
-                    elseif($pprice = $curprice AND ($curtime-$time) >= $var_logging_cooldown) {
+                    elseif(($pprice == $curprice) AND ($curtime-$time) >= $var_logging_cooldown) {
                         echo '<tr><th style="font-size: 90%; color: #E59437">It seems the price has not changed since last checked!</th></tr>';
                     }
                 } catch (Exception $e) {
@@ -304,7 +304,7 @@ elseif(isset($_GET["random"])) {
                         }
                     }
                 
-                    elseif($pprice = $curprice AND ($curtime-$time) >= $var_logging_cooldown) {
+                    elseif(($pprice == $curprice AND) ($curtime-$time) >= $var_logging_cooldown) {
                         echo '<tr><th style="font-size: 90%; color: #E59437">It seems the price has not changed since last checked!</th></tr>';
                     }
                 } catch (Exception $e) {
