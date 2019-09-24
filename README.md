@@ -9,5 +9,5 @@ Parts of Maralook utilize [this project](https://sourceforge.net/projects/simple
 ## Copyright and License
 Images and various media copyright by www.MaraPets.com. All Rights Reserved. Used With Permission. <br>
 Acknowledging Jose Solorzano (https://sourceforge.net/projects/php-html/)<br>
-Project copyright by Benjamin Robert.<br>
+Project developed by Benjamin Robert.<br>
 Maralook is licensed under the terms of the GNU General Public License v3.0.
